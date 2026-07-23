@@ -23,6 +23,7 @@ interface AuthState {
   logout: () => void;
   updateUser: (user: Partial<User>) => void;
   hasRole: (role: UserRole) => boolean;
+  hasPermission: (permission: string) => boolean;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -54,6 +55,12 @@ export const useAuthStore = create<AuthState>()(
       hasRole: (role) => {
         const state = get();
         return state.user?.role === role;
+      },
+
+      hasPermission: (permission) => {
+        const state = get();
+        if (state.user?.role === 'ADMIN') return true;
+        return false;
       },
     }),
     {

@@ -69,7 +69,7 @@ function VerifyOtpForm() {
       if (user.role === 'ADMIN') {
         router.push('/dashboard');
       } else {
-        router.push('/');
+        router.push('/dashboard');
       }
     } catch (err: any) {
       toast.error(err?.message || 'Invalid or expired OTP code.');
@@ -95,7 +95,7 @@ function VerifyOtpForm() {
   };
 
   return (
-    <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+    <div className="bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
       <div className="flex items-center space-x-2 text-slate-400 mb-4">
         <Link href="/signup" className="hover:text-white transition flex items-center space-x-1 text-xs">
           <ArrowLeft className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ function VerifyOtpForm() {
 
       <h2 className="text-xl font-bold text-white mb-2">Verify Your Account</h2>
       <p className="text-sm text-slate-400 mb-6">
-        Enter the 6-digit verification code sent to <span className="text-indigo-400 font-semibold">{target || 'your email/phone'}</span>
+        Enter the 6-digit verification code sent to <span className="text-primary font-semibold">{target || 'your email/phone'}</span>
       </p>
 
       <form onSubmit={handleVerify} className="space-y-6">
@@ -120,7 +120,7 @@ function VerifyOtpForm() {
               value={digit}
               onChange={(e) => handleChange(index, e.target.value)}
               onKeyDown={(e) => handleKeyDown(index, e)}
-              className="w-12 h-14 text-center text-xl font-bold bg-slate-950/80 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+              className="w-12 h-14 text-center text-xl font-bold bg-slate-950/80 border border-slate-800 rounded-xl text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
             />
           ))}
         </div>
@@ -128,7 +128,7 @@ function VerifyOtpForm() {
         <button
           type="submit"
           disabled={isLoading || otp.join('').length !== 6}
-          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl text-sm shadow-lg shadow-primary/25 transition duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <>
@@ -147,7 +147,7 @@ function VerifyOtpForm() {
           type="button"
           onClick={handleResend}
           disabled={timer > 0 || isResending}
-          className="text-indigo-400 hover:text-indigo-300 font-medium flex items-center space-x-1 disabled:opacity-50 disabled:cursor-not-allowed transition"
+          className="text-primary hover:underline font-semibold flex items-center space-x-1 disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           {isResending ? (
             <Loader2 className="w-3.5 h-3.5 animate-spin" />

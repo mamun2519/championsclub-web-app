@@ -67,7 +67,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+    <div className="bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
       <h2 className="text-xl font-bold text-white mb-2">Create New Account</h2>
       <p className="text-sm text-slate-400 mb-6">Fill in your information to register</p>
 
@@ -84,7 +84,7 @@ export default function SignupPage() {
               {...register('name')}
               type="text"
               placeholder="John Doe"
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
           </div>
           {errors.name && <p className="text-xs text-rose-500 mt-1">{errors.name.message}</p>}
@@ -102,7 +102,7 @@ export default function SignupPage() {
               {...register('phone')}
               type="text"
               placeholder="01712345678"
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
           </div>
           {errors.phone && <p className="text-xs text-rose-500 mt-1">{errors.phone.message}</p>}
@@ -120,7 +120,7 @@ export default function SignupPage() {
               {...register('email')}
               type="email"
               placeholder="player@championsclub.com"
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
           </div>
           {errors.email && <p className="text-xs text-rose-500 mt-1">{errors.email.message}</p>}
@@ -138,7 +138,7 @@ export default function SignupPage() {
               {...register('password')}
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••"
-              className="w-full pl-10 pr-10 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
             <button
               type="button"
@@ -163,7 +163,7 @@ export default function SignupPage() {
               {...register('confirmPassword')}
               type={showConfirmPassword ? 'text' : 'password'}
               placeholder="••••••••"
-              className="w-full pl-10 pr-10 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
             <button
               type="button"
@@ -181,7 +181,7 @@ export default function SignupPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+          className="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl text-sm shadow-lg shadow-primary/25 transition duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
         >
           {isLoading ? (
             <>
@@ -196,7 +196,7 @@ export default function SignupPage() {
 
       <div className="mt-6 text-center text-sm text-slate-400">
         Already have an account?{' '}
-        <Link href="/login" className="font-medium text-indigo-400 hover:text-indigo-300 transition">
+        <Link href="/login" className="font-semibold text-primary hover:underline transition">
           Sign In
         </Link>
       </div>

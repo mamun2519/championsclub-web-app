@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Lock, Mail, Phone, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Lock, Mail, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import apiClient from '@/lib/api-client';
 import { useAuthStore } from '@/store/auth.store';
@@ -48,7 +48,7 @@ export default function LoginPage() {
       if (user.role === 'ADMIN') {
         router.push('/dashboard');
       } else {
-        router.push('/');
+        router.push('/dashboard');
       }
     } catch (err: any) {
       toast.error(err?.message || 'Login failed. Please check your credentials.');
@@ -58,9 +58,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+    <div className="bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
       <h2 className="text-xl font-bold text-white mb-2">Sign In to Your Account</h2>
-      <p className="text-sm text-slate-400 mb-6">Enter your details to access the dashboard</p>
+      <p className="text-sm text-slate-400 mb-6">Enter your details to access the platform</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
@@ -75,7 +75,7 @@ export default function LoginPage() {
               {...register('emailOrPhone')}
               type="text"
               placeholder="admin@championsclub.com or 01712345678"
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
           </div>
           {errors.emailOrPhone && (
@@ -95,7 +95,7 @@ export default function LoginPage() {
               {...register('password')}
               type={showPassword ? 'text' : 'password'}
               placeholder="••••••••"
-              className="w-full pl-10 pr-10 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm transition"
+              className="w-full pl-10 pr-10 py-2.5 bg-slate-950/80 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition"
             />
             <button
               type="button"
@@ -113,7 +113,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl text-sm shadow-lg shadow-indigo-600/30 transition duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+          className="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl text-sm shadow-lg shadow-primary/25 transition duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed mt-2"
         >
           {isLoading ? (
             <>
@@ -128,7 +128,7 @@ export default function LoginPage() {
 
       <div className="mt-6 text-center text-sm text-slate-400">
         Don&apos;t have an account?{' '}
-        <Link href="/signup" className="font-medium text-indigo-400 hover:text-indigo-300 transition">
+        <Link href="/signup" className="font-semibold text-primary hover:underline transition">
           Create Account
         </Link>
       </div>
