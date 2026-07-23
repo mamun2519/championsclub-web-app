@@ -1,18 +1,17 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-/**
- * User roles for the platform
- */
-export type UserRole = 'student' | 'agent' | 'admin' | 'guest';
+export type UserRole = 'ADMIN' | 'PLAYER';
 
-interface User {
+export interface User {
   id: string;
   name: string;
   email: string;
+  phone: string;
   role: UserRole;
-  permissions: string[]; // List of specific actions, e.g., ['lead:view', 'lead:edit']
-  image?: string;
+  walletBalance?: number;
+  profilePhoto?: string | null;
+  isVerified?: boolean;
 }
 
 interface AuthState {
@@ -20,17 +19,12 @@ interface AuthState {
   token: string | null;
   isAuthenticated: boolean;
 
-  // Actions
   setAuth: (user: User, token: string) => void;
   logout: () => void;
   updateUser: (user: Partial<User>) => void;
-  hasPermission: (permission: string) => boolean;
+  hasRole: (role: UserRole) => boolean;
 }
 
-/**
- * Global Auth Store using Zustand.
- * Persistent storage is used to keep the user logged in after refresh.
- */
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
@@ -57,14 +51,13 @@ export const useAuthStore = create<AuthState>()(
           user: state.user ? { ...state.user, ...updatedUser } : null,
         })),
 
-      hasPermission: (permission) => {
+      hasRole: (role) => {
         const state = get();
-        if (state.user?.role === 'admin') return true; // Admins have all permissions
-        return state.user?.permissions.includes(permission) || false;
+        return state.user?.role === role;
       },
     }),
     {
-      name: 'malisha-auth-storage', // Key name in localStorage
+      name: 'championsclub-auth-storage',
       storage: createJSONStorage(() => localStorage),
     }
   )

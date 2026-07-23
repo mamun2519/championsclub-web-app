@@ -7,25 +7,14 @@ export const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
   REGISTER: '/register',
+  SIGNUP: '/signup',
+  VERIFY_OTP: '/verify-otp',
   UNAUTHORIZED: '/unauthorized',
 
   // Protected Routes
   DASHBOARD: '/dashboard',
   PROFILE: '/dashboard/profile',
   SETTINGS: '/dashboard/settings',
-
-  // Role-based Routes (examples)
-  ADMIN: {
-    DASHBOARD: '/admin/dashboard',
-    USERS: '/admin/users',
-  },
-  AGENT: {
-    DASHBOARD: '/agent/dashboard',
-  },
-  STUDENT: {
-    DASHBOARD: '/student/dashboard',
-    APPLICATIONS: '/student/applications',
-  },
 } as const;
 
 /**
@@ -36,8 +25,10 @@ export const PUBLIC_ROUTES = [
   ROUTES.HOME,
   ROUTES.LOGIN,
   ROUTES.REGISTER,
+  ROUTES.SIGNUP,
+  ROUTES.VERIFY_OTP,
   ROUTES.UNAUTHORIZED,
-  ROUTES.DASHBOARD, // Whitelisted for starter template development
+  ROUTES.DASHBOARD,
 ];
 
 /**
